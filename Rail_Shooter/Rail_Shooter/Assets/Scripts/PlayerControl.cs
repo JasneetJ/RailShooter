@@ -5,78 +5,84 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] float controlSpeed = 10f;
-    [SerializeField] float xRange = 5f;
-    [SerializeField] float yRange = 5f;
+    [SerializeField] float cannonBallForce = 50f;
+    [SerializeField] float shootCooldown = 0.3f;
 
-    float xThrow;
-    float yThrow;
+    //float xThrow;
+    //float yThrow;
 
-    [SerializeField] float rotationFactor;
-    [SerializeField] float positionPitchFactor = 2f;
-    [SerializeField] float controlPitchFactor = 10f;
-    [SerializeField] float positionYawFactor = 2f;
-    [SerializeField] float controlRollFactor = 5f;
+    //[SerializeField] float rotationFactor;
+    //[SerializeField] float positionPitchFactor = 2f;
+    //[SerializeField] float controlPitchFactor = 10f;
+    //[SerializeField] float positionYawFactor = 2f;
+    //[SerializeField] float controlRollFactor = 5f;
 
-    [SerializeField] GameObject[] lasers;
+    [SerializeField] GameObject cannonBall;
+    [SerializeField] Transform rightPosition;
+    [SerializeField] Transform leftPosition;
+    [SerializeField] Transform spawnAtRuntime;
+    [SerializeField] bool canShoot = true;
 
     void Update()
     {
-        ProcessTranslation();
-        ProcessRotation();
-        ProcessFiring();
-    }
-
-    private void ProcessFiring()
-    {
+        //ProcessTranslation();
+        //ProcessRotation();
         if (Input.GetButton("Fire1"))
         {
-            SetLaserActive(true);
+            StartCoroutine(FireCannonBalls());
         }
-        else
+    }
+
+    private IEnumerator FireCannonBalls()
+    {
+        if (canShoot)
         {
-            SetLaserActive(false);
+            canShoot = false;
+
+            GameObject cannonBallRight = Instantiate(cannonBall, rightPosition.position, rightPosition.rotation);
+            cannonBallRight.transform.parent = spawnAtRuntime;
+            cannonBallRight.GetComponent<Rigidbody>().velocity = Vector3.forward * cannonBallForce;
+            Destroy(cannonBallRight, 3f);
+
+            GameObject cannonBallLeft = Instantiate(cannonBall, leftPosition.position, leftPosition.rotation);
+            cannonBallLeft.transform.parent = spawnAtRuntime;
+            cannonBallLeft.GetComponent<Rigidbody>().velocity = Vector3.forward * cannonBallForce;
+            Destroy(cannonBallLeft, 3f);
+
+            yield return new WaitForSeconds(shootCooldown);
+            canShoot = true;
         }
     }
 
-    private void SetLaserActive(bool isActive)
-    {
-        foreach (GameObject laser in lasers)
-        {
-            var emissionModule = laser.GetComponent<ParticleSystem>().emission;
-            emissionModule.enabled = isActive;
-        }
-    }
+    //private void ProcessRotation()
+    //
+    //  float pitchDueToPosition = transform.localPosition.y * -positionPitchFactor;
+    //  float pitchDueToControlThrow = -yThrow * controlPitchFactor;
+    //  float pitch = pitchDueToPosition + pitchDueToControlThrow;
+    //
+    //  float yaw = transform.localPosition.x * positionYawFactor;
+    //
+    //  float roll = xThrow * -controlRollFactor;
+    //
+    //  Quaternion targetRotation = Quaternion.Euler(pitch, yaw, roll);
+    //
+    //    transform.localRotation = Quaternion.RotateTowards
+    //        (transform.localRotation, targetRotation, rotationFactor);
+    //}
 
-    private void ProcessRotation()
-    {
-        float pitchDueToPosition = transform.localPosition.y * -positionPitchFactor;
-        float pitchDueToControlThrow = -yThrow * controlPitchFactor;
-        float pitch = pitchDueToPosition + pitchDueToControlThrow;
-
-        float yaw = transform.localPosition.x * positionYawFactor;
-
-        float roll = xThrow * -controlRollFactor;
-
-        Quaternion targetRotation = Quaternion.Euler(pitch, yaw, roll);
-
-        transform.localRotation = Quaternion.RotateTowards
-            (transform.localRotation, targetRotation, rotationFactor);
-    }
-
-    private void ProcessTranslation()
-    {
-        xThrow = Input.GetAxis("Horizontal");
-        yThrow = Input.GetAxis("Vertical");
-
-        float xOffset = xThrow * Time.deltaTime * controlSpeed;
-        float rawXPos = transform.localPosition.x + xOffset;
-        float clampedXPos = Mathf.Clamp(rawXPos, -xRange, xRange);
-
-        float yOffset = yThrow * Time.deltaTime * controlSpeed;
-        float rawYPos = transform.localPosition.y + yOffset;
-        float clampedYPos = Mathf.Clamp(rawYPos, -yRange, yRange);
-
-        transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
-    }
+    //private void ProcessTranslation()
+    //{
+    //    xThrow = Input.GetAxis("Horizontal");
+    //    yThrow = Input.GetAxis("Vertical");
+    //
+    //    float xOffset = xThrow * Time.deltaTime * controlSpeed;
+    //    float rawXPos = transform.localPosition.x + xOffset;
+    //    float clampedXPos = Mathf.Clamp(rawXPos, -xRange, xRange);
+    //
+    //    float yOffset = yThrow * Time.deltaTime * controlSpeed;
+    //    float rawYPos = transform.localPosition.y + yOffset;
+    //    float clampedYPos = Mathf.Clamp(rawYPos, -yRange, yRange);
+    //
+    //    transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
+    //}
 }
