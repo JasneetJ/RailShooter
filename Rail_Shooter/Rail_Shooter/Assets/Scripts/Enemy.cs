@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
     ScoreBoard scoreBoard;
     [SerializeField] int scorePerEnemy = 20;
     [SerializeField] int hitPoints = 3;
+    [SerializeField] float shootDelay;
+    [SerializeField] float cannonBallSpeed;
+    bool canShoot = true;
 
     private void Start()
     {
@@ -24,12 +27,16 @@ public class Enemy : MonoBehaviour
         rigidBody.useGravity = false;
     }
 
-    private void OnParticleCollision(GameObject other)
+    private void OnTriggerEnter(Collider other)
     {
-        ProcessHit();
-        if (hitPoints <= 0)
+        if (other.gameObject.tag == "PlayerCannonBall")
         {
-            KillEnemy();
+            Destroy(other.gameObject);
+            ProcessHit();
+            if (hitPoints <= 0)
+            {
+                KillEnemy();
+            }
         }
     }
 
@@ -46,5 +53,18 @@ public class Enemy : MonoBehaviour
         newEnemyExplosionVFX.transform.parent = parentGameObject.transform;
         scoreBoard.IncreaseScore(scorePerEnemy);
         Destroy(gameObject);
+    }
+
+    private IEnumerator FireCannonBall()
+    {
+        if (canShoot)
+        {
+            canShoot = false;
+
+            // Setup position objects on enemy ship and new cannonball with EnemyCannonBall tag
+
+            yield return new WaitForSeconds(shootDelay);
+            canShoot = true;
+        }
     }
 }
