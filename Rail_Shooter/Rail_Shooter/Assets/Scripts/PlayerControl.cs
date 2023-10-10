@@ -29,25 +29,34 @@ public class PlayerControl : MonoBehaviour
         //ProcessRotation();
         if (Input.GetButton("Fire1"))
         {
-            StartCoroutine(FireCannonBalls());
+            StartCoroutine(FireCannonBalls("Left"));
+        }
+        else if (Input.GetButton("Fire2"))
+        {
+            StartCoroutine(FireCannonBalls("Right"));
         }
     }
 
-    private IEnumerator FireCannonBalls()
+    private IEnumerator FireCannonBalls(string side)
     {
         if (canShoot)
         {
             canShoot = false;
 
-            GameObject cannonBallRight = Instantiate(cannonBall, rightPosition.position, rightPosition.rotation);
-            cannonBallRight.transform.parent = spawnAtRuntime;
-            cannonBallRight.GetComponent<Rigidbody>().velocity = Vector3.forward * cannonBallForce;
-            Destroy(cannonBallRight, 3f);
-
-            GameObject cannonBallLeft = Instantiate(cannonBall, leftPosition.position, leftPosition.rotation);
-            cannonBallLeft.transform.parent = spawnAtRuntime;
-            cannonBallLeft.GetComponent<Rigidbody>().velocity = Vector3.forward * cannonBallForce;
-            Destroy(cannonBallLeft, 3f);
+            if (side == "Right")
+            {
+                GameObject cannonBallRight = Instantiate(cannonBall, rightPosition.position, rightPosition.rotation);
+                cannonBallRight.transform.parent = spawnAtRuntime;
+                cannonBallRight.GetComponent<Rigidbody>().velocity = Vector3.forward * cannonBallForce;
+                Destroy(cannonBallRight, 3f);
+            }
+            if (side == "Left")
+            {
+                GameObject cannonBallLeft = Instantiate(cannonBall, leftPosition.position, leftPosition.rotation);
+                cannonBallLeft.transform.parent = spawnAtRuntime;
+                cannonBallLeft.GetComponent<Rigidbody>().velocity = Vector3.forward * cannonBallForce;
+                Destroy(cannonBallLeft, 3f);
+            }
 
             yield return new WaitForSeconds(shootCooldown);
             canShoot = true;
