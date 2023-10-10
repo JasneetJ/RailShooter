@@ -350,7 +350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502577335}
   m_LocalRotation: {x: 0.04740121, y: -0, z: -0, w: 0.998876}
-  m_LocalPosition: {x: -0.6, y: 23.6, z: 2147}
+  m_LocalPosition: {x: 370, y: 23.6, z: 2147}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1096,15 +1096,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4072823740114409758, guid: e0ea2e8e103e1c24fbbe4d56ca38a850, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4072823740114409758, guid: e0ea2e8e103e1c24fbbe4d56ca38a850, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4072823740114409758, guid: e0ea2e8e103e1c24fbbe4d56ca38a850, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4072823740114409758, guid: e0ea2e8e103e1c24fbbe4d56ca38a850, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1293,7 +1293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2045002628
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1855,11 +1855,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7660021960386344450, guid: 7b7b8d92b6b27cd4dbeb90a95154f64b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 105.7
+      value: 105.70001
       objectReference: {fileID: 0}
     - target: {fileID: 7660021960386344450, guid: 7b7b8d92b6b27cd4dbeb90a95154f64b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 24.900024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2086,14 +2086,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8418687176222674099}
-  m_LocalRotation: {x: 0.11874189, y: -0, z: -0, w: 0.99292517}
-  m_LocalPosition: {x: 0, y: 9.06, z: -22.43}
+  m_LocalRotation: {x: 0.12113469, y: -0, z: -0, w: 0.99263614}
+  m_LocalPosition: {x: 0, y: 3.71, z: -7.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4216331391570066308}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 13.639, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 13.915, y: 0, z: 0}
 --- !u!95 &8210914818987924911
 Animator:
   serializedVersion: 5
