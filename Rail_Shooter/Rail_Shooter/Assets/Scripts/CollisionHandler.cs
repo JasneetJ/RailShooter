@@ -15,11 +15,14 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] Image livesImage;
     [SerializeField] Sprite[] heartSprites;
     [SerializeField] GameObject[] playerCannons;
-    PlayerControl playerControl; 
+    [SerializeField] GameObject enemyHitVFX;
+    PlayerControl playerControl;
+    GameObject parentGameObject;
 
     private void Start()
     {
         playerControl = FindObjectOfType<PlayerControl>();
+        parentGameObject = GameObject.FindWithTag("SpawnAtRuntime");
     }
 
     private IEnumerator Die()
@@ -46,6 +49,8 @@ public class CollisionHandler : MonoBehaviour
         else if (other.gameObject.tag == "EnemyCannonBall")
         {
             Destroy(other.gameObject);
+            GameObject newHitVFX = Instantiate(enemyHitVFX, transform.position, Quaternion.identity);
+            newHitVFX.transform.parent = parentGameObject.transform;
             lives -= 1;
             livesImage.GetComponent<Image>().sprite = heartSprites[lives];
             if (lives <= 0)

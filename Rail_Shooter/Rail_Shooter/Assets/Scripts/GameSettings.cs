@@ -7,23 +7,22 @@ public class GameSettings : MonoBehaviour
     // 1 = true
     // 2 = false
 
-    [SerializeField] bool isTutorialFinished = false;
-
     private void Awake()
     {
-        if (PlayerPrefs.GetInt("isTutorialFinished") == 1)
+        InitializeGlobal("isTutorialDone");
+    }
+
+    //fix this for types like setfloat setint etc
+    private void InitializeGlobal(string key)
+    {
+        if (!PlayerPrefs.HasKey(key))
         {
-            isTutorialFinished = true;
-        }
-        else if (PlayerPrefs.GetInt("isTutorialFinished") == 2)
-        {
-            isTutorialFinished = false;
+            PlayerPrefs.SetInt(key, 2);
         }
     }
 
     private void OnApplicationQuit()
     {
         PlayerPrefs.Save();
-        Debug.Log("quit");
     }
 }
