@@ -1,18 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float loadDelay = 1f;
     [SerializeField] ParticleSystem explosionVFX;
+    [SerializeField] int lives = 3;
+    [SerializeField] Image livesImage;
+    [SerializeField] Sprite[] heartSprites;
+    [SerializeField] GameObject[] playerCannons;
+    PlayerControl playerControl; 
+
+    private void Start()
+    {
+        playerControl = FindObjectOfType<PlayerControl>();
+    }
+
     private IEnumerator Die()
     {
-        gameObject.GetComponent<PlayerControl>().enabled = false;
+        GetComponent<PlayerControl>().enabled = false;
         explosionVFX.Play();
         GetComponent<MeshRenderer>().enabled = false;
-        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<MeshCollider>().enabled = false;
+        playerControl.playerAlive = false;
+        foreach (GameObject cannon in playerCannons)
+        {
+            cannon.GetComponent<MeshRenderer>().enabled = false;
+        }
         yield return new WaitForSeconds(loadDelay);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -22,6 +42,16 @@ public class CollisionHandler : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             StartCoroutine(Die());
+        }
+        else if (other.gameObject.tag == "EnemyCannonBall")
+        {
+            Destroy(other.gameObject);
+            lives -= 1;
+            livesImage.GetComponent<Image>().sprite = heartSprites[lives];
+            if (lives <= 0)
+            {
+                StartCoroutine(Die());
+            }
         }
     }
 }

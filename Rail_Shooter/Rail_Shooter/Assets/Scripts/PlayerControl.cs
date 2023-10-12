@@ -21,7 +21,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] Transform rightPosition;
     [SerializeField] Transform leftPosition;
     [SerializeField] Transform spawnAtRuntime;
-    [SerializeField] bool canShoot = true;
+    public bool canShoot = true;
+    public bool playerAlive = true;
 
     void Update()
     {
@@ -39,7 +40,7 @@ public class PlayerControl : MonoBehaviour
 
     private IEnumerator FireCannonBalls(string side)
     {
-        if (canShoot)
+        if (canShoot && playerAlive)
         {
             canShoot = false;
 

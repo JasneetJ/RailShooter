@@ -11,7 +11,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] int scorePerEnemy = 20;
     [SerializeField] int hitPoints = 3;
     [SerializeField] float shootDelay;
-    [SerializeField] float cannonBallSpeed;
+    [SerializeField] float cannonBallForce;
+    [SerializeField] GameObject cannonBallPrefab;
+    [SerializeField] GameObject posObject;
     bool canShoot = true;
 
     private void Start()
@@ -19,6 +21,11 @@ public class Enemy : MonoBehaviour
         scoreBoard = FindObjectOfType<ScoreBoard>();
         parentGameObject = GameObject.FindWithTag("SpawnAtRuntime");
         AddRigidbody();
+    }
+
+    private void Update()
+    {
+        StartCoroutine(FireCannonBall());
     }
 
     private void AddRigidbody()
@@ -61,7 +68,10 @@ public class Enemy : MonoBehaviour
         {
             canShoot = false;
 
-            // Setup position objects on enemy ship and new cannonball with EnemyCannonBall tag
+            GameObject cannonBall = Instantiate(cannonBallPrefab, posObject.transform.position, posObject.transform.rotation);
+            cannonBall.transform.parent = parentGameObject.transform;
+            cannonBall.GetComponent<Rigidbody>().velocity = -Vector3.forward * cannonBallForce;
+            Destroy(cannonBall, 3f);
 
             yield return new WaitForSeconds(shootDelay);
             canShoot = true;

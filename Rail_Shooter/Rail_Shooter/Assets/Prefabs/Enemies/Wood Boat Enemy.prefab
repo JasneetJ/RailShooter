@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5923180040681290540}
   m_Layer: 0
-  m_Name: LeftPos
+  m_Name: Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,8 +107,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642388314843621647}
-  m_LocalRotation: {x: -7.089488e-15, y: 9.3132235e-10, z: 3.5249573e-15, w: 1}
-  m_LocalPosition: {x: 2.132, y: 0.618, z: -0.019}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.06, y: 0.62, z: -0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 371.89
+      value: 372.34
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -149,19 +149,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2469.49
+      value: -2461.68
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.01151547
+      value: -0.017452264
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9999337
+      value: 0.99984777
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalRotation.z
@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 178.68
+      value: 182
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -243,4 +243,8 @@ MonoBehaviour:
   enemyExplosionVFX: {fileID: 8335535431816315716, guid: 16eb467ed4696fc4fa8bab4f039b2992, type: 3}
   hitVFX: {fileID: 8335535431816315716, guid: 5561d2be38f5e9c49bb407383d728db1, type: 3}
   scorePerEnemy: 20
-  hitPoints: 3
+  hitPoints: 2
+  shootDelay: 4
+  cannonBallForce: 35
+  cannonBallPrefab: {fileID: 6039587838114838543, guid: ace77bc5dff0a1b4aa5309f535eceedd, type: 3}
+  posObject: {fileID: 1642388314843621647}
