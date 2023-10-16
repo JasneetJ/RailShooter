@@ -39,7 +39,6 @@ public class CollisionHandler : MonoBehaviour
 
         foreach (GameObject cannon in playerCannons)
         {
-        {
             cannon.GetComponent<MeshRenderer>().enabled = false;
         }
 
