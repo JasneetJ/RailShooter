@@ -1,21 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] float cannonBallForce = 50f;
     [SerializeField] float shootCooldown = 0.3f;
+    [SerializeField] float controlSpeed = 10f;
+    [SerializeField] float xRange = 5f;
 
-    //float xThrow;
-    //float yThrow;
-
-    //[SerializeField] float rotationFactor;
-    //[SerializeField] float positionPitchFactor = 2f;
-    //[SerializeField] float controlPitchFactor = 10f;
-    //[SerializeField] float positionYawFactor = 2f;
-    //[SerializeField] float controlRollFactor = 5f;
+    float xThrow;
 
     [SerializeField] GameObject cannonBall;
     [SerializeField] Transform rightPosition;
@@ -26,8 +22,7 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        //ProcessTranslation();
-        //ProcessRotation();
+        ProcessTranslation();
         if (Input.GetButton("Fire1"))
         {
             StartCoroutine(FireCannonBalls("Left"));
@@ -64,35 +59,14 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    //private void ProcessRotation()
-    //
-    //  float pitchDueToPosition = transform.localPosition.y * -positionPitchFactor;
-    //  float pitchDueToControlThrow = -yThrow * controlPitchFactor;
-    //  float pitch = pitchDueToPosition + pitchDueToControlThrow;
-    //
-    //  float yaw = transform.localPosition.x * positionYawFactor;
-    //
-    //  float roll = xThrow * -controlRollFactor;
-    //
-    //  Quaternion targetRotation = Quaternion.Euler(pitch, yaw, roll);
-    //
-    //    transform.localRotation = Quaternion.RotateTowards
-    //        (transform.localRotation, targetRotation, rotationFactor);
-    //}
+    private void ProcessTranslation()
+    {
+        xThrow = Input.GetAxis("Horizontal");
 
-    //private void ProcessTranslation()
-    //{
-    //    xThrow = Input.GetAxis("Horizontal");
-    //    yThrow = Input.GetAxis("Vertical");
-    //
-    //    float xOffset = xThrow * Time.deltaTime * controlSpeed;
-    //    float rawXPos = transform.localPosition.x + xOffset;
-    //    float clampedXPos = Mathf.Clamp(rawXPos, -xRange, xRange);
-    //
-    //    float yOffset = yThrow * Time.deltaTime * controlSpeed;
-    //    float rawYPos = transform.localPosition.y + yOffset;
-    //    float clampedYPos = Mathf.Clamp(rawYPos, -yRange, yRange);
-    //
-    //    transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
-    //}
+        float xOffset = xThrow * Time.deltaTime * controlSpeed;
+        float rawXPos = transform.localPosition.x + xOffset;
+        float clampedXPos = Mathf.Clamp(rawXPos, -xRange, xRange);
+
+        transform.localPosition = new Vector3(clampedXPos, transform.localPosition.y, transform.localPosition.z);
+    }
 }

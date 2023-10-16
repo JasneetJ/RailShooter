@@ -9,15 +9,9 @@ public class GameSettings : MonoBehaviour
 
     private void Awake()
     {
-        InitializeGlobal("isTutorialDone");
-    }
-
-    //fix this for types like setfloat setint etc
-    private void InitializeGlobal(string key)
-    {
-        if (!PlayerPrefs.HasKey(key))
+        if (!PlayerPrefs.HasKey("isTutorialDone"))
         {
-            PlayerPrefs.SetInt(key, 2);
+            PlayerPrefs.SetInt("isTutorialDone", 2);
         }
     }
 
