@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject enemyExplosionVFX;
-    [SerializeField] GameObject hitVFX;
+    [SerializeField] GameObject enemyHitVFX;
     GameObject parentGameObject;
     ScoreBoard scoreBoard;
     [SerializeField] int scorePerEnemy = 20;
     [SerializeField] int hitPoints = 3;
     [SerializeField] float shootDelay;
     [SerializeField] float cannonBallForce;
+    [SerializeField] GameObject[] cannonPrefabs;
     [SerializeField] GameObject cannonBallPrefab;
-    [SerializeField] GameObject posObject;
     bool canShoot = true;
 
     private void Start()
@@ -50,7 +51,7 @@ public class Enemy : MonoBehaviour
     private void ProcessHit()
     {
         hitPoints -= 1;
-        GameObject newHitVFX = Instantiate(hitVFX, transform.position, Quaternion.identity);
+        GameObject newHitVFX = Instantiate(enemyHitVFX, transform.position, Quaternion.identity);
         newHitVFX.transform.parent = parentGameObject.transform;
     }
 
@@ -68,10 +69,14 @@ public class Enemy : MonoBehaviour
         {
             canShoot = false;
 
-            GameObject cannonBall = Instantiate(cannonBallPrefab, posObject.transform.position, posObject.transform.rotation);
-            cannonBall.transform.parent = parentGameObject.transform;
-            cannonBall.GetComponent<Rigidbody>().velocity = -Vector3.forward * cannonBallForce;
-            Destroy(cannonBall, 3f);
+            foreach (GameObject cannonPrefab in cannonPrefabs)
+            {
+                Transform pos = cannonPrefab.transform.Find("Pos").transform;
+                GameObject newCannonBall = Instantiate(cannonBallPrefab, pos.position, pos.rotation);
+                newCannonBall.transform.parent = parentGameObject.transform;
+                newCannonBall.GetComponent<Rigidbody>().velocity = -Vector3.forward * cannonBallForce;
+                Destroy(newCannonBall, 3f);
+            }
 
             yield return new WaitForSeconds(shootDelay);
             canShoot = true;
