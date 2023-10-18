@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2639145729404567646}
   - component: {fileID: 55568773075636319}
   m_Layer: 0
-  m_Name: Cannon_2 (1)
+  m_Name: Cannon_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalScale.x
@@ -141,27 +141,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 372.34
+      value: 8.41
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.35
+      value: -1.161
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2461.68
+      value: 20.34
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.017452264
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
-      propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.99984777
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalRotation.z
@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 182
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -182,6 +182,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_Name
       value: Wood Boat Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -241,10 +245,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyExplosionVFX: {fileID: 8335535431816315716, guid: 16eb467ed4696fc4fa8bab4f039b2992, type: 3}
-  hitVFX: {fileID: 8335535431816315716, guid: 5561d2be38f5e9c49bb407383d728db1, type: 3}
-  scorePerEnemy: 20
-  hitPoints: 2
-  shootDelay: 4
+  enemyHitVFX: {fileID: 8335535431816315716, guid: af24f6848e3daa9468cc32badc1d4e44, type: 3}
+  scorePerEnemy: 10
+  hitPoints: 3
+  shootDelay: 2.5
   cannonBallForce: 35
+  cannonPrefabs:
+  - {fileID: 767472025554462860}
   cannonBallPrefab: {fileID: 6039587838114838543, guid: ace77bc5dff0a1b4aa5309f535eceedd, type: 3}
-  posObject: {fileID: 1642388314843621647}
