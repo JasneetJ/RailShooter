@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] float cannonBallForce = 50f;
-    [SerializeField] float shootCooldown = 0.3f;
+    [SerializeField] float cannonBallForce;
+    [SerializeField] float shootCooldown;
     [SerializeField] float controlSpeed = 10f;
     [SerializeField] float xRange = 5f;
 
@@ -43,14 +43,14 @@ public class PlayerControl : MonoBehaviour
             {
                 GameObject cannonBallRight = Instantiate(cannonBall, rightPosition.position, rightPosition.rotation);
                 cannonBallRight.transform.parent = spawnAtRuntime;
-                cannonBallRight.GetComponent<Rigidbody>().velocity = Vector3.forward * cannonBallForce;
+                cannonBallRight.GetComponent<Rigidbody>().AddForce(-transform.right * cannonBallForce);
                 Destroy(cannonBallRight, 3f);
             }
             if (side == "Left")
             {
                 GameObject cannonBallLeft = Instantiate(cannonBall, leftPosition.position, leftPosition.rotation);
                 cannonBallLeft.transform.parent = spawnAtRuntime;
-                cannonBallLeft.GetComponent<Rigidbody>().velocity = Vector3.forward * cannonBallForce;
+                cannonBallLeft.GetComponent<Rigidbody>().AddForce(-transform.right * cannonBallForce);
                 Destroy(cannonBallLeft, 3f);
             }
 

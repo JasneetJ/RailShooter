@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject enemyHitVFX;
     GameObject parentGameObject;
     ScoreBoard scoreBoard;
-    [SerializeField] int scorePerEnemy = 20;
-    [SerializeField] int hitPoints = 3;
+    [SerializeField] int scorePerEnemy;
+    [SerializeField] int hitPoints;
     [SerializeField] float shootDelay;
     [SerializeField] float cannonBallForce;
     [SerializeField] GameObject[] cannonPrefabs;
@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
                 Transform pos = cannonPrefab.transform.Find("Pos").transform;
                 GameObject newCannonBall = Instantiate(cannonBallPrefab, pos.position, pos.rotation);
                 newCannonBall.transform.parent = parentGameObject.transform;
-                newCannonBall.GetComponent<Rigidbody>().velocity = -Vector3.forward * cannonBallForce;
+                newCannonBall.GetComponent<Rigidbody>().AddForce(transform.forward * cannonBallForce);
                 Destroy(newCannonBall, 3f);
             }
 
