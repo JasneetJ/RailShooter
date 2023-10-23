@@ -141,15 +141,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.41
+      value: -31.52
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.161
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.34
+      value: 45.47
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -200,6 +200,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3297737147027696338}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5580004208895888788}
   m_SourcePrefab: {fileID: 100100000, guid: 506eed4210c3bb0428d5bd0e644c7aa7, type: 3}
 --- !u!4 &7477290372542573950 stripped
 Transform:
@@ -249,7 +252,28 @@ MonoBehaviour:
   scorePerEnemy: 10
   hitPoints: 3
   shootDelay: 2.5
-  cannonBallForce: 35
+  cannonBallForce: 40
   cannonPrefabs:
   - {fileID: 767472025554462860}
   cannonBallPrefab: {fileID: 6039587838114838543, guid: ace77bc5dff0a1b4aa5309f535eceedd, type: 3}
+--- !u!95 &5580004208895888788
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7822606689804842948}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -18,6 +18,7 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] GameObject enemyHitVFX;
     PlayerControl playerControl;
     GameObject parentGameObject;
+    public bool playerHasShield = false;
 
     private void Start()
     {
@@ -48,25 +49,28 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (playerHasShield == false)
         {
-            StartCoroutine(Die());
-        }
-        else if (other.gameObject.tag == "EnemyCannonBall")
-        {
-            Destroy(other.gameObject);
-
-            lives -= 1;
-            livesImage.GetComponent<Image>().sprite = heartSprites[lives];
-
-            if (lives <= 0)
+            if (other.gameObject.tag == "Enemy")
             {
                 StartCoroutine(Die());
             }
-            else
+            else if (other.gameObject.tag == "EnemyCannonBall")
             {
-                GameObject newHitVFX = Instantiate(enemyHitVFX, transform.position, Quaternion.identity);
-                newHitVFX.transform.parent = parentGameObject.transform;
+                Destroy(other.gameObject);
+
+                lives -= 1;
+                livesImage.GetComponent<Image>().sprite = heartSprites[lives];
+
+                if (lives <= 0)
+                {
+                    StartCoroutine(Die());
+                }
+                else
+                {
+                    GameObject newHitVFX = Instantiate(enemyHitVFX, transform.position, Quaternion.identity);
+                    newHitVFX.transform.parent = parentGameObject.transform;
+                }
             }
         }
     }
