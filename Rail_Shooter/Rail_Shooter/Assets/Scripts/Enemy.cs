@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
             ProcessHit();
             if (hitPoints <= 0)
             {
-                KillEnemy();
+                Die();
             }
         }
     }
@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
         newHitVFX.transform.parent = parentGameObject.transform;
     }
 
-    private void KillEnemy()
+    public void Die()
     {
         GameObject newEnemyExplosionVFX = Instantiate(enemyExplosionVFX, transform.position, Quaternion.identity);
         newEnemyExplosionVFX.transform.parent = parentGameObject.transform;

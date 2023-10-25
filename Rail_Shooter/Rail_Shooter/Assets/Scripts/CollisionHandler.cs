@@ -49,28 +49,29 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (playerHasShield == false)
-        {
-            if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
+            if (playerHasShield == false)
             {
                 StartCoroutine(Die());
             }
-            else if (other.gameObject.tag == "EnemyCannonBall")
+            else
             {
-                Destroy(other.gameObject);
+                other.gameObject.GetComponent<Enemy>().Die();
+            }
+        else if (other.gameObject.tag == "EnemyCannonBall" && playerHasShield == false)
+        {
+            Destroy(other.gameObject);
+            lives -= 1;
+            livesImage.GetComponent<Image>().sprite = heartSprites[lives];
 
-                lives -= 1;
-                livesImage.GetComponent<Image>().sprite = heartSprites[lives];
-
-                if (lives <= 0)
-                {
-                    StartCoroutine(Die());
-                }
-                else
-                {
-                    GameObject newHitVFX = Instantiate(enemyHitVFX, transform.position, Quaternion.identity);
-                    newHitVFX.transform.parent = parentGameObject.transform;
-                }
+            if (lives <= 0)
+            {
+                StartCoroutine(Die());
+            }
+            else
+            {
+                GameObject newHitVFX = Instantiate(enemyHitVFX, transform.position, Quaternion.identity);
+                newHitVFX.transform.parent = parentGameObject.transform;
             }
         }
     }
