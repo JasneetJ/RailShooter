@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] float cannonBallForce;
-    [SerializeField] float shootCooldown;
+    [SerializeField] public float cannonBallForce;
+    [SerializeField] public float shootCooldown;
     [SerializeField] float controlSpeed = 10f;
     [SerializeField] float xRange = 5f;
 
