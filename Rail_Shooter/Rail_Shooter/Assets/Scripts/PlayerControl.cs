@@ -46,7 +46,7 @@ public class PlayerControl : MonoBehaviour
                 cannonBallRight.GetComponent<Rigidbody>().AddForce(-transform.right * cannonBallForce);
                 Destroy(cannonBallRight, 3f);
             }
-            if (side == "Left")
+            else if (side == "Left")
             {
                 GameObject cannonBallLeft = Instantiate(cannonBall, leftPosition.position, leftPosition.rotation);
                 cannonBallLeft.transform.parent = spawnAtRuntime;
