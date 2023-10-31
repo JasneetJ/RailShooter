@@ -252,10 +252,11 @@ MonoBehaviour:
   scorePerEnemy: 10
   hitPoints: 3
   shootDelay: 2.5
-  cannonBallForce: 40
+  cannonBallForce: 2000
   cannonPrefabs:
   - {fileID: 767472025554462860}
   cannonBallPrefab: {fileID: 6039587838114838543, guid: ace77bc5dff0a1b4aa5309f535eceedd, type: 3}
+  shootBackwards: 0
 --- !u!95 &5580004208895888788
 Animator:
   serializedVersion: 5

@@ -22,8 +22,10 @@ public class Health : MonoBehaviour
     private void HealPlayer(Collider other)
     {
         CollisionHandler collisionHandler = other.gameObject.GetComponent<CollisionHandler>();
-        collisionHandler.lives++;
-        collisionHandler.livesImage.GetComponent<Image>().sprite = collisionHandler.heartSprites[collisionHandler.lives];
-
+        if (collisionHandler.lives > 0 && collisionHandler.lives < 3)
+        {
+            collisionHandler.lives++;
+            collisionHandler.livesImage.GetComponent<Image>().sprite = collisionHandler.heartSprites[collisionHandler.lives];
+        }
     }
 }
