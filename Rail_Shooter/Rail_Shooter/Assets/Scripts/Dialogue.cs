@@ -133,5 +133,11 @@ public class Dialogue : MonoBehaviour
         }
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(UpdateDialogue("WITH SHIELD, YOU WILL GAIN IMMUNITY AND BE ABLE TO RAM ENEMIES", false));
+        while (isReady == false)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(8f);
+        StartCoroutine(UpdateDialogue("CAREFUL HERE, YOU CAN'T STEER AROUND THIS ONE", false));
     }
 }

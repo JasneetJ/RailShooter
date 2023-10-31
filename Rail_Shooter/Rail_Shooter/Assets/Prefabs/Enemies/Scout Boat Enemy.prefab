@@ -474,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6c567c9eb17644780f66c4dea0324b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.04
+      value: -45.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6c567c9eb17644780f66c4dea0324b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -482,11 +482,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6c567c9eb17644780f66c4dea0324b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.89
+      value: 167.21
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6c567c9eb17644780f66c4dea0324b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6c567c9eb17644780f66c4dea0324b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -494,11 +494,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6c567c9eb17644780f66c4dea0324b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6c567c9eb17644780f66c4dea0324b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6c567c9eb17644780f66c4dea0324b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -506,7 +506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6c567c9eb17644780f66c4dea0324b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 360
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6c567c9eb17644780f66c4dea0324b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -563,9 +563,9 @@ MonoBehaviour:
   enemyExplosionVFX: {fileID: 8335535431816315716, guid: 16eb467ed4696fc4fa8bab4f039b2992, type: 3}
   enemyHitVFX: {fileID: 8335535431816315716, guid: af24f6848e3daa9468cc32badc1d4e44, type: 3}
   scorePerEnemy: 70
-  hitPoints: 12
-  shootDelay: 2
-  cannonBallForce: 35
+  hitPoints: 10
+  shootDelay: 1.5
+  cannonBallForce: 3200
   cannonPrefabs:
   - {fileID: 7487211035833671722}
   - {fileID: 3893319765014520655}

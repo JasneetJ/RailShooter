@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float cannonBallForce;
     [SerializeField] GameObject[] cannonPrefabs;
     [SerializeField] GameObject cannonBallPrefab;
+    [SerializeField] bool shootBackwards;
     bool canShoot = true;
 
     private void Start()
@@ -74,7 +75,12 @@ public class Enemy : MonoBehaviour
                 Transform pos = cannonPrefab.transform.Find("Pos").transform;
                 GameObject newCannonBall = Instantiate(cannonBallPrefab, pos.position, pos.rotation);
                 newCannonBall.transform.parent = parentGameObject.transform;
-                newCannonBall.GetComponent<Rigidbody>().AddForce(transform.forward * cannonBallForce);
+                Vector3 direction = transform.forward;
+                if (shootBackwards)
+                {
+                    direction = -direction;
+                }
+                newCannonBall.GetComponent<Rigidbody>().AddForce(direction * cannonBallForce);
                 Destroy(newCannonBall, 3f);
             }
 

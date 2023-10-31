@@ -7,7 +7,6 @@ public class Shield : MonoBehaviour
 {
     [SerializeField] float duration = 4f;
     [SerializeField] Image shieldImage;
-    bool hasShield = false;
 
     private void OnTriggerEnter(Collider other)
     {

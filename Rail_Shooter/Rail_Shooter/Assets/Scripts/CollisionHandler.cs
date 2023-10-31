@@ -11,9 +11,9 @@ public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float loadDelay = 1f;
     [SerializeField] ParticleSystem explosionVFX;
-    [SerializeField] int lives = 3;
-    [SerializeField] Image livesImage;
-    [SerializeField] Sprite[] heartSprites;
+    [SerializeField] public int lives = 3;
+    [SerializeField] public Image livesImage;
+    [SerializeField] public Sprite[] heartSprites;
     [SerializeField] GameObject[] playerCannons;
     [SerializeField] GameObject enemyHitVFX;
     PlayerControl playerControl;

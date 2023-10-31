@@ -355,11 +355,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fb2bcf6de7a3fd14f8e4ec1f1a2e1bc1, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb2bcf6de7a3fd14f8e4ec1f1a2e1bc1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 85.18
+      value: 68.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb2bcf6de7a3fd14f8e4ec1f1a2e1bc1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -367,7 +367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb2bcf6de7a3fd14f8e4ec1f1a2e1bc1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 86.179535
+      value: 130.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb2bcf6de7a3fd14f8e4ec1f1a2e1bc1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -375,7 +375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb2bcf6de7a3fd14f8e4ec1f1a2e1bc1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb2bcf6de7a3fd14f8e4ec1f1a2e1bc1, type: 3}
       propertyPath: m_LocalRotation.y
@@ -383,7 +383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb2bcf6de7a3fd14f8e4ec1f1a2e1bc1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb2bcf6de7a3fd14f8e4ec1f1a2e1bc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -445,7 +445,7 @@ MonoBehaviour:
   enemyExplosionVFX: {fileID: 8335535431816315716, guid: 16eb467ed4696fc4fa8bab4f039b2992, type: 3}
   enemyHitVFX: {fileID: 8335535431816315716, guid: af24f6848e3daa9468cc32badc1d4e44, type: 3}
   scorePerEnemy: 30
-  hitPoints: 6
+  hitPoints: 5
   shootDelay: 2
   cannonBallForce: 2000
   cannonPrefabs:
