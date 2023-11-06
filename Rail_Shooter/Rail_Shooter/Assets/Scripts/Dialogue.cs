@@ -155,5 +155,11 @@ public class Dialogue : MonoBehaviour
         yield return new WaitForSeconds(8f);
         title.text = "QUEEN BOAT";
         StartCoroutine(UpdateDialogue("YOU WILL NOT PASS, HERE IS WHERE YOU PERISH!", false, queenBoatImage));
+        while (isReady == false)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(4f);
+        StartCoroutine(UpdateDialogue("THERE'S TOO MANY, TURN NOW!", false, queenBoatImage));
     }
 }
