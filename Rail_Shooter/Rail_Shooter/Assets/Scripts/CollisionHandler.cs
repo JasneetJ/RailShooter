@@ -15,7 +15,7 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] public Image livesImage;
     [SerializeField] public Sprite[] heartSprites;
     [SerializeField] GameObject[] playerCannons;
-    [SerializeField] GameObject enemyHitVFX;
+    [SerializeField] GameObject hitVFX;
     PlayerControl playerControl;
     GameObject parentGameObject;
     public bool playerHasShield = false;
@@ -70,7 +70,7 @@ public class CollisionHandler : MonoBehaviour
             }
             else
             {
-                GameObject newHitVFX = Instantiate(enemyHitVFX, transform.position, Quaternion.identity);
+                GameObject newHitVFX = Instantiate(hitVFX, transform.position, Quaternion.identity);
                 newHitVFX.transform.parent = parentGameObject.transform;
             }
         }

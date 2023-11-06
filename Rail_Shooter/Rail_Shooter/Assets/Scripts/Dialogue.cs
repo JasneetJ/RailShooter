@@ -12,20 +12,21 @@ public class Dialogue : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] Image captainImage;
+    [SerializeField] Image queenBoatImage;
     [SerializeField] TextMeshProUGUI continueText;
-    [SerializeField] TextMeshProUGUI captainText;
+    [SerializeField] TextMeshProUGUI title;
     [SerializeField] public bool paused = false;
     [SerializeField] PlayableDirector[] timelinesToPause;
     bool pressedSpace = false;
     bool lookingForInput = false;
     bool isReady = true;
 
-    private IEnumerator UpdateDialogue(string dialogue, bool waitForInput)
+    private IEnumerator UpdateDialogue(string dialogue, bool waitForInput, Image imageToUse)
     {
         isReady = false;
         dialogueText.enabled = true;
-        captainImage.enabled = true;
-        captainText.enabled = true;
+        imageToUse.enabled = true;
+        title.enabled = true;
 
         string tempString = "";
         int runningIndex = 0;
@@ -60,8 +61,9 @@ public class Dialogue : MonoBehaviour
 
         dialogueText.text = "";
         dialogueText.enabled = false;
-        captainImage.enabled = false;
-        captainText.enabled = false;
+        imageToUse.enabled = false;
+        title.enabled = false;
+        title.text = "CAPTAIN";
         continueText.enabled = false;
         isReady = true;
     }
@@ -78,8 +80,9 @@ public class Dialogue : MonoBehaviour
     {
         dialogueText.enabled = false;
         captainImage.enabled = false;
+        queenBoatImage.enabled = false;
         continueText.enabled = false;
-        captainText.enabled = false;
+        title.enabled = false;
 
         StartCoroutine(BeginDialogue());
     }
@@ -105,39 +108,52 @@ public class Dialogue : MonoBehaviour
     private IEnumerator BeginDialogue()
     {
         Invoke("PauseGame", 0.1f);
-        StartCoroutine(UpdateDialogue("HELLO?? HELLO???", true));
+        StartCoroutine(UpdateDialogue("HELLO?? HELLO???", true, captainImage));
         while (isReady == false)
         {
             yield return null;
         }
-        StartCoroutine(UpdateDialogue("THANK GOODNESS YOU'RE HERE", true));
+        StartCoroutine(UpdateDialogue("THANK GOODNESS YOU'RE HERE!", true, captainImage));
         while (isReady == false)
         {
             yield return null;
         }
-        StartCoroutine(UpdateDialogue("I'VE BEEN KIDNAPPED, YOU MUST REACH THE ISLAND TO SAVE ME! I WILL GUIDE YOU ALONG THE WAY", true));
+        StartCoroutine(UpdateDialogue("I'VE BEEN KIDNAPPED, YOU MUST REACH THE ISLAND TO SAVE ME! I WILL GUIDE YOU ALONG THE WAY", true, captainImage));
         while (isReady == false)
         {
             yield return null;
         }
         ResumeGame();
-        StartCoroutine(UpdateDialogue("DESTROY THE ENEMIES IN YOUR WAY WITH YOUR CANNONS (LEFT CLICK / RIGHT CLICK)", false));
+        StartCoroutine(UpdateDialogue("DESTROY THE ENEMIES IN YOUR WAY WITH YOUR CANNONS (HOLD LEFT CLICK / RIGHT CLICK)", false, captainImage));
         while (isReady == false)
         {
             yield return null;
         }
-        StartCoroutine(UpdateDialogue("STEER YOUR BOAT TO AVOID CRASHING (S / D)", false));
+        StartCoroutine(UpdateDialogue("STEER YOUR BOAT TO AVOID CRASHING (A / D)", false, captainImage));
         while (isReady == false)
         {
             yield return null;
         }
         yield return new WaitForSeconds(1.5f);
-        StartCoroutine(UpdateDialogue("WITH SHIELD, YOU WILL GAIN IMMUNITY AND BE ABLE TO RAM ENEMIES", false));
+        StartCoroutine(UpdateDialogue("WITH SHIELD, YOU WILL GAIN IMMUNITY AND BE ABLE TO RUN INTO ENEMIES WITHOUT DYING", false, captainImage));
         while (isReady == false)
         {
             yield return null;
         }
         yield return new WaitForSeconds(8f);
-        StartCoroutine(UpdateDialogue("CAREFUL HERE, YOU CAN'T STEER AROUND THIS ONE", false));
+        StartCoroutine(UpdateDialogue("CAREFUL HERE, YOU CAN'T STEER AROUND THIS ONE", false, captainImage));
+        while (isReady == false)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(22f);
+        StartCoroutine(UpdateDialogue("THIS IS A STRONG WAVE OF SHIPS, YOU MAY WANT TO SLIDE IN BETWEEN THEM", false, captainImage));
+        while (isReady == false)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(8f);
+        title.text = "QUEEN BOAT";
+        StartCoroutine(UpdateDialogue("YOU WILL NOT PASS, HERE IS WHERE YOU PERISH!", false, queenBoatImage));
     }
 }

@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyExplosionVFX: {fileID: 8335535431816315716, guid: 16eb467ed4696fc4fa8bab4f039b2992, type: 3}
-  enemyHitVFX: {fileID: 8335535431816315716, guid: af24f6848e3daa9468cc32badc1d4e44, type: 3}
+  enemyHitVFX: {fileID: 8335535431816315716, guid: 5561d2be38f5e9c49bb407383d728db1, type: 3}
   scorePerEnemy: 10
   hitPoints: 3
   shootDelay: 2.5

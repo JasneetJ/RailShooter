@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyExplosionVFX: {fileID: 8335535431816315716, guid: 16eb467ed4696fc4fa8bab4f039b2992, type: 3}
-  enemyHitVFX: {fileID: 8335535431816315716, guid: af24f6848e3daa9468cc32badc1d4e44, type: 3}
+  enemyHitVFX: {fileID: 8335535431816315716, guid: 5561d2be38f5e9c49bb407383d728db1, type: 3}
   scorePerEnemy: 70
   hitPoints: 10
   shootDelay: 1.5
@@ -572,6 +572,7 @@ MonoBehaviour:
   - {fileID: 5441163423771466341}
   - {fileID: 1180313369270400901}
   cannonBallPrefab: {fileID: 6039587838114838543, guid: ace77bc5dff0a1b4aa5309f535eceedd, type: 3}
+  shootBackwards: 0
 --- !u!65 &2946604455435756876
 BoxCollider:
   m_ObjectHideFlags: 0
