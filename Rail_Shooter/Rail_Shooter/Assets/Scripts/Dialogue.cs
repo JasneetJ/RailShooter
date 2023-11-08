@@ -21,7 +21,7 @@ public class Dialogue : MonoBehaviour
     bool pressedSpace = false;
     bool lookingForInput = false;
     bool isReady = true;
-    public bool queenIsAlive = true;
+    public bool isQueenDead = false;
     GameObject masterTimeline;
 
     private IEnumerator UpdateDialogue(string dialogue, bool waitForInput, Image imageToUse)
@@ -172,19 +172,16 @@ public class Dialogue : MonoBehaviour
         yield return new WaitForSeconds(2f);
         title.text = "QUEEN BOAT";
         StartCoroutine(UpdateDialogue("FINE, I'LL DO IT MYSELF!", false, queenBoatImage));
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3.8f);
         masterTimeline.GetComponent<PlayableDirector>().Pause();
-        Debug.Log(queenIsAlive);
-        while (isReady == false || queenIsAlive == true)
+        while (isReady == false || isQueenDead == false)
         {
-            Debug.Log(queenIsAlive);
             yield return null;
         }
-        Debug.Log(queenIsAlive);
         masterTimeline.GetComponent<PlayableDirector>().Resume();
-        yield return new WaitForSeconds(1f);
-        StartCoroutine(UpdateDialogue("YOU SAVED ME! LET'S GET OUT OF HERE BEFORE MORE OF THEM COME.", false, captainImage));
         yield return new WaitForSeconds(2f);
+        StartCoroutine(UpdateDialogue("YOU SAVED ME! LET'S GET OUT OF HERE QUICK.", false, captainImage));
+        yield return new WaitForSeconds(4f);
         SceneManager.LoadScene("Win");
     }
 }

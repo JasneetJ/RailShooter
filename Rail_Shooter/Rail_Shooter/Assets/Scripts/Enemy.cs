@@ -22,6 +22,10 @@ public class Enemy : MonoBehaviour
     {
         scoreBoard = FindObjectOfType<ScoreBoard>();
         parentGameObject = GameObject.FindWithTag("SpawnAtRuntime");
+        if (gameObject.name == "Wood Boat Queen")
+        {
+            cannonBallPrefab.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
         AddRigidbody();
     }
 
@@ -63,8 +67,7 @@ public class Enemy : MonoBehaviour
         scoreBoard.IncreaseScore(scorePerEnemy);
         if (gameObject.name == "Wood Boat Queen")
         {
-            FindObjectOfType<Dialogue>().queenIsAlive = false;
-            Debug.Log("queen died");
+            GameObject.Find("Dialogue").GetComponent<Dialogue>().isQueenDead = true;
         }
         Destroy(gameObject);
     }
