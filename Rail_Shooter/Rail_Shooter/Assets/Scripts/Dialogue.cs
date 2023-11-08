@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using System;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class Dialogue : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Dialogue : MonoBehaviour
     bool pressedSpace = false;
     bool lookingForInput = false;
     bool isReady = true;
+    public bool queenIsAlive = true;
+    GameObject masterTimeline;
 
     private IEnumerator UpdateDialogue(string dialogue, bool waitForInput, Image imageToUse)
     {
@@ -83,6 +86,7 @@ public class Dialogue : MonoBehaviour
         queenBoatImage.enabled = false;
         continueText.enabled = false;
         title.enabled = false;
+        masterTimeline = GameObject.Find("Master Timeline");
 
         StartCoroutine(BeginDialogue());
     }
@@ -118,48 +122,69 @@ public class Dialogue : MonoBehaviour
         {
             yield return null;
         }
-        StartCoroutine(UpdateDialogue("I'VE BEEN KIDNAPPED, YOU MUST REACH THE ISLAND TO SAVE ME! I WILL GUIDE YOU ALONG THE WAY", true, captainImage));
+        StartCoroutine(UpdateDialogue("I'VE BEEN KIDNAPPED, YOU MUST REACH THE ISLAND TO SAVE ME! I WILL GUIDE YOU ALONG THE WAY.", true, captainImage));
         while (isReady == false)
         {
             yield return null;
         }
         ResumeGame();
-        StartCoroutine(UpdateDialogue("DESTROY THE ENEMIES IN YOUR WAY WITH YOUR CANNONS (HOLD LEFT CLICK / RIGHT CLICK)", false, captainImage));
+        StartCoroutine(UpdateDialogue("DESTROY THE ENEMIES IN YOUR WAY WITH YOUR CANNONS (HOLD LEFT CLICK / RIGHT CLICK).", false, captainImage));
         while (isReady == false)
         {
             yield return null;
         }
-        StartCoroutine(UpdateDialogue("STEER YOUR BOAT TO AVOID CRASHING (A / D)", false, captainImage));
+        StartCoroutine(UpdateDialogue("STEER YOUR BOAT TO AVOID CRASHING (A / D).", false, captainImage));
         while (isReady == false)
         {
             yield return null;
         }
         yield return new WaitForSeconds(1.5f);
-        StartCoroutine(UpdateDialogue("WITH SHIELD, YOU WILL GAIN IMMUNITY AND BE ABLE TO RUN INTO ENEMIES WITHOUT DYING", false, captainImage));
+        StartCoroutine(UpdateDialogue("WITH SHIELD, YOU WILL GAIN IMMUNITY AND BE ABLE TO RUN INTO ENEMIES WITHOUT DYING.", false, captainImage));
         while (isReady == false)
         {
             yield return null;
         }
         yield return new WaitForSeconds(8f);
-        StartCoroutine(UpdateDialogue("CAREFUL HERE, YOU CAN'T STEER AROUND THIS ONE", false, captainImage));
+        StartCoroutine(UpdateDialogue("CAREFUL HERE, YOU CAN'T STEER AROUND THIS ONE.", false, captainImage));
         while (isReady == false)
         {
             yield return null;
         }
         yield return new WaitForSeconds(22f);
-        StartCoroutine(UpdateDialogue("THIS IS A STRONG WAVE OF SHIPS, YOU MAY WANT TO SLIDE IN BETWEEN THEM", false, captainImage));
+        StartCoroutine(UpdateDialogue("THIS IS A STRONG WAVE OF SHIPS, YOU MAY WANT TO SLIDE IN BETWEEN THEM.", false, captainImage));
         while (isReady == false)
         {
             yield return null;
         }
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(6f);
         title.text = "QUEEN BOAT";
         StartCoroutine(UpdateDialogue("YOU WILL NOT PASS, HERE IS WHERE YOU PERISH!", false, queenBoatImage));
         while (isReady == false)
         {
             yield return null;
         }
-        yield return new WaitForSeconds(4f);
-        StartCoroutine(UpdateDialogue("THERE'S TOO MANY, TURN NOW!", false, queenBoatImage));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(UpdateDialogue("THERE'S TOO MANY, TURN NOW!", false, captainImage));
+        while (isReady == false)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(2f);
+        title.text = "QUEEN BOAT";
+        StartCoroutine(UpdateDialogue("FINE, I'LL DO IT MYSELF!", false, queenBoatImage));
+        yield return new WaitForSeconds(3f);
+        masterTimeline.GetComponent<PlayableDirector>().Pause();
+        Debug.Log(queenIsAlive);
+        while (isReady == false || queenIsAlive == true)
+        {
+            Debug.Log(queenIsAlive);
+            yield return null;
+        }
+        Debug.Log(queenIsAlive);
+        masterTimeline.GetComponent<PlayableDirector>().Resume();
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(UpdateDialogue("YOU SAVED ME! LET'S GET OUT OF HERE BEFORE MORE OF THEM COME.", false, captainImage));
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Win");
     }
 }

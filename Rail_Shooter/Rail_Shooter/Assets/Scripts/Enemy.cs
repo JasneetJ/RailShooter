@@ -61,6 +61,11 @@ public class Enemy : MonoBehaviour
         GameObject newEnemyExplosionVFX = Instantiate(enemyExplosionVFX, transform.position, Quaternion.identity);
         newEnemyExplosionVFX.transform.parent = parentGameObject.transform;
         scoreBoard.IncreaseScore(scorePerEnemy);
+        if (gameObject.name == "Wood Boat Queen")
+        {
+            FindObjectOfType<Dialogue>().queenIsAlive = false;
+            Debug.Log("queen died");
+        }
         Destroy(gameObject);
     }
 
