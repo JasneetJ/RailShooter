@@ -172,7 +172,7 @@ public class Dialogue : MonoBehaviour
         yield return new WaitForSeconds(2f);
         title.text = "QUEEN BOAT";
         StartCoroutine(UpdateDialogue("FINE, I'LL DO IT MYSELF!", false, queenBoatImage));
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(3.65f);
         masterTimeline.GetComponent<PlayableDirector>().Pause();
         while (isReady == false || isQueenDead == false)
         {
