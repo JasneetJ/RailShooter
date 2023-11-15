@@ -5,8 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class ButtonHandler : MonoBehaviour
 {
-    public void PlayAgain()
+    public void Play()
     {
         SceneManager.LoadScene("Main");
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
