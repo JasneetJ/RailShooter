@@ -172,7 +172,7 @@ public class Dialogue : MonoBehaviour
         yield return new WaitForSeconds(2f);
         title.text = "QUEEN BOAT";
         StartCoroutine(UpdateDialogue("FINE, I'LL DO IT MYSELF!", false, queenBoatImage));
-        yield return new WaitForSeconds(3.68f);
+        yield return new WaitForSeconds(2.6f);
         masterTimeline.GetComponent<PlayableDirector>().Pause();
         while (isReady == false || isQueenDead == false)
         {
@@ -181,7 +181,11 @@ public class Dialogue : MonoBehaviour
         masterTimeline.GetComponent<PlayableDirector>().Resume();
         yield return new WaitForSeconds(2f);
         StartCoroutine(UpdateDialogue("YOU SAVED ME! LET'S GET OUT OF HERE QUICK.", false, captainImage));
-        yield return new WaitForSeconds(4f);
+        while (isReady == false)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("Win");
     }
 }
