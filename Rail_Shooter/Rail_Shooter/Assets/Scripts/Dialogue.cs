@@ -145,7 +145,7 @@ public class Dialogue : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(8f);
-        StartCoroutine(UpdateDialogue("CAREFUL HERE, YOU CAN'T STEER AROUND THIS ONE.", false, captainImage));
+        StartCoroutine(UpdateDialogue("YOU MAY WANT TO UTILIZE YOUR RIGHT-SIDE CANNON HERE.", false, captainImage));
         while (isReady == false)
         {
             yield return null;
@@ -172,7 +172,7 @@ public class Dialogue : MonoBehaviour
         yield return new WaitForSeconds(2f);
         title.text = "QUEEN BOAT";
         StartCoroutine(UpdateDialogue("FINE, I'LL DO IT MYSELF!", false, queenBoatImage));
-        yield return new WaitForSeconds(2.6f);
+        yield return new WaitForSeconds(2.75f);
         masterTimeline.GetComponent<PlayableDirector>().Pause();
         while (isReady == false || isQueenDead == false)
         {
